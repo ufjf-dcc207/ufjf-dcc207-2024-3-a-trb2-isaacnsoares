@@ -1,0 +1,27 @@
+.disco {
+  height: 30px;
+  margin: 5px 0;
+  background-color: #6c5ce4;
+  color: #ffffff;
+  text-align: center;
+}
+
+.disco-1 {
+  width: 60px;
+}
+
+.disco-2 {
+  width: 80px;
+}
+
+.disco-3 {
+  width: 100px;
+}
+
+.disco-4 {
+  width: 120px;
+}
+
+.disco-5 {
+  width: 140px;
+}
