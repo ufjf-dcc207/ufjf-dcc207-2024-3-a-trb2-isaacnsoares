@@ -9,6 +9,7 @@ function App() {
       <Disco tamanho={2}/>
       <Disco tamanho={3}/>
       <Disco tamanho={4}/>
+      <Disco tamanho={5}/>
     </>
   )
 }
