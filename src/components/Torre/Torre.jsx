@@ -6,6 +6,7 @@ const Torre = ({discos}) => {
 
   return (
     <div className='torre'>
+      <div className="torre-base"></div>
       {discos.map((tamanho) => (
         <Disco key={tamanho} tamanho={tamanho} />
       ))}
