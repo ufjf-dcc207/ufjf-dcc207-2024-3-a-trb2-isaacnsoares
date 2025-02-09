@@ -1,17 +1,23 @@
-import './App.css'
-import Disco from "./components/Disco/Disco.jsx"
+import "./App.css";
+import Torre from "./components/Torre/Torre.jsx";
+import { useState } from "react";
 
 function App() {
+  const [torres, setTorres] = useState([
+    [5, 4, 3, 2, 1], 
+    [], 
+    []
+  ]);
 
   return (
     <>
-      <Disco tamanho={1}/>
-      <Disco tamanho={2}/>
-      <Disco tamanho={3}/>
-      <Disco tamanho={4}/>
-      <Disco tamanho={5}/>
+      <div className="app">
+        {torres.map((discos, index) => (
+          <Torre key={index} discos={discos}/>
+        ))}
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
