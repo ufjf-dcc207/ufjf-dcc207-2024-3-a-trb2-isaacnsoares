@@ -28,7 +28,14 @@ function App() {
       }
       return torres;
     });
+    if(torres == [[], [], [1, 2, 3, 4, 5]]){
+      alert("Parabéns! Você ganhou.");
+    }
   };
+
+  const reiniciar = () => {
+    setTorres([[1, 2, 3, 4, 5], [], []]);
+  }
 
   return (
     <div className="app">
@@ -62,6 +69,7 @@ function App() {
           </select>
         </label>
         <button onClick={moverDisco}>Mover Disco</button>
+        <button onClick={reiniciar}>Reiniciar</button>
       </div>
     </div>
   );
