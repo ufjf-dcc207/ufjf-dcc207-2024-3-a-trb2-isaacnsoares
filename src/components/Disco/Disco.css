@@ -1,27 +1,50 @@
 .disco {
-  height: 30px;
-  margin: 5px 0;
-  background-color: #6c5ce4;
-  color: #ffffff;
+  height: 35px;
+  margin-top: 5px;
+  background: linear-gradient(to bottom, #FFD700, #FFA500);
+  color: #000;
+  font-weight: bold;
   text-align: center;
+  border-radius: 10px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+  z-index: 2;
+}
+
+.torre .disco:first-child {
+  margin-top: 0;
+}
+
+.disco:active {
+  cursor: grabbing;
+  transform: scale(1.1);
 }
 
 .disco-1 {
   width: 60px;
+  background: linear-gradient(to bottom, #ff9999, #ff4d4d);
 }
 
 .disco-2 {
   width: 80px;
+  background: linear-gradient(to bottom, #ffcc66, #ff9900);
 }
 
 .disco-3 {
   width: 100px;
+  background: linear-gradient(to bottom, #99cc66, #66b32f);
 }
 
 .disco-4 {
   width: 120px;
+  background: linear-gradient(to bottom, #6699ff, #3366ff);
 }
 
 .disco-5 {
   width: 140px;
+  background: linear-gradient(to bottom, #cc66ff, #9933ff);
 }
