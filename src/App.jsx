@@ -1,53 +1,64 @@
+import React, { useState } from "react";
 import "./App.css";
 import Torre from "./components/Torre/Torre.jsx";
-import { useState } from "react";
 
 function App() {
   const [torres, setTorres] = useState([
-    [5, 4, 3, 2, 1], 
-    [], 
+    [5, 4, 3, 2, 1],
+    [],
     []
   ]);
 
-  const moverDisco = (origemIndex, destinoIndex) => (discoTamanho) => {
-    setTorres((torres) => {
-      //cria uma nova matriz, fazendo as mudanças necessárias
-      const novasTorres = torres.map((torre, index) => {
-        // Se for a torre de origem, cria outra sem o devido disco
-        if (index == origemIndex) {
-          return torre.filter((tamanho) => tamanho !== parseInt(discoTamanho));
-        }
-        // Se for a torre de destino, adiciona o devido disco
-        if (index == destinoIndex) {
-          return [parseInt(discoTamanho), ...torre];
-        }
-        return torre;
-      });
-      return novasTorres;
-    })
-  }
+  const [origem, setOrigem] = useState(0);
+  const [destino, setDestino] = useState(1); // Inicializa para a próxima torre
 
-  const soltar = (origemIndex) => (discoTamanho) => {
+  const moverDisco = () => {
     setTorres((torres) => {
-      // Encontra a torre de destino
-      const destinoIndex = torres.findIndex(
-        (torre) => torre.length == 0 || torre[0] > parseInt(discoTamanho)
-      );
-      // Garante que a torre de destino existe e não é a mesma de origem
-      if (destinoIndex != -1 && destinoIndex != origemIndex) {
-        moverDisco(origemIndex, destinoIndex)(discoTamanho);
+      const disco = torres[origem][0];
+      if (
+        torres[origem].length > 0 &&
+        (torres[destino].length === 0 || torres[destino][0] > disco)
+      ) {
+        const novasTorres = torres.map((torre, index) => {
+          if (index === origem) {
+            return torre.slice(1); // Remove o disco do topo da torre de origem
+          }
+          if (index === destino) {
+            return [disco, ...torre]; // Adiciona o disco ao topo da torre de destino
+          }
+          return torre;
+        });
+        return novasTorres;
       }
+      return torres;
     });
   };
 
   return (
-    <>
-      <div className="app">
-        {torres.map((discos, index) => (
-          <Torre key={index} discos={discos} soltarDisco={soltar(index)}/>
-        ))}
+    <div className="app">
+      <div className="controles">
+        <label>
+          Torre de Origem:
+          <select value={origem + 1} onChange={(e) => setOrigem(parseInt(e.target.value) - 1)}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <label>
+          Torre de Destino:
+          <select value={destino + 1} onChange={(e) => setDestino(parseInt(e.target.value) - 1)}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button onClick={moverDisco}>Mover Disco</button>
       </div>
-    </>
+      {torres.map((discos, index) => (
+        <Torre key={index} discos={discos} />
+      ))}
+    </div>
   );
 }
 
