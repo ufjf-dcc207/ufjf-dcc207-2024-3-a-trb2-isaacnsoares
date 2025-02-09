@@ -3,11 +3,7 @@ import "./App.css";
 import Torre from "./components/Torre/Torre.jsx";
 
 function App() {
-  const [torres, setTorres] = useState([
-    [5, 4, 3, 2, 1],
-    [],
-    []
-  ]);
+  const [torres, setTorres] = useState([[1, 2, 3, 4, 5], [], []]);
 
   const [origem, setOrigem] = useState(0);
   const [destino, setDestino] = useState(1); // Inicializa para a próxima torre
@@ -36,10 +32,19 @@ function App() {
 
   return (
     <div className="app">
+      <div className="torres">
+        {torres.map((discos, index) => (
+          <Torre key={index} discos={discos} />
+        ))}
+      </div>
+
       <div className="controles">
         <label>
           Torre de Origem:
-          <select value={origem + 1} onChange={(e) => setOrigem(parseInt(e.target.value) - 1)}>
+          <select
+            value={origem + 1}
+            onChange={(e) => setOrigem(parseInt(e.target.value) - 1)}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -47,7 +52,10 @@ function App() {
         </label>
         <label>
           Torre de Destino:
-          <select value={destino + 1} onChange={(e) => setDestino(parseInt(e.target.value) - 1)}>
+          <select
+            value={destino + 1}
+            onChange={(e) => setDestino(parseInt(e.target.value) - 1)}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -55,9 +63,6 @@ function App() {
         </label>
         <button onClick={moverDisco}>Mover Disco</button>
       </div>
-      {torres.map((discos, index) => (
-        <Torre key={index} discos={discos} />
-      ))}
     </div>
   );
 }
