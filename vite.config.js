@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/trabalho2-dwfe",
+  base: "/ufjf-dcc207-2024-3-a-trb2-isaacnsoares",
   plugins: [react()],
 })
